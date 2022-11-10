@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../Button/Button";
 import "./SignInForm.styles.scss"
 import FormInput from "../../Components/FormInput/FormInput";
@@ -24,8 +24,6 @@ const SignInForm = ({googleSignIn}) => {
     event.preventDefault();
     try{
       const response = await SignInAuthUserWithEmailAndPassword(email,password);
-      console.log(response)
-
       resetFormField()
     }
     catch(error){

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../../Context/UserContext";
 import {
   auth,
   createAuthUserWithEmailAndPassword,
@@ -26,10 +27,12 @@ const SignUpForm = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (password !== confirmPassword) {
-      alert("passwords do not match");
+      alert('passwords do not match');
       return;
     }
+
     try {
       const { user } = await createAuthUserWithEmailAndPassword(
         email,
@@ -38,16 +41,13 @@ const SignUpForm = () => {
 
       await createUserDocumentFromAuth(user, { name });
       resetFormFields();
-      alert("User Succesfully Created!")
-      
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user, email already in use");
+      if (error.code === 'auth/email-already-in-use') {
+        alert('Cannot create user, email already in use');
       } else {
-        console.log("user creation encountered an error", error);
+       // console.log('user creation encountered an error', error);
       }
     }
-    
   };
   return (
     <div style={{width:"44%"}}>
