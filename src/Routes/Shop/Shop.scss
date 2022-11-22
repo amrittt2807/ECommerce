@@ -1,6 +1,6 @@
-.Card-Container{
+.products-container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    column-gap: 10px;
-    row-gap: 1rem;
+    column-gap: 2rem;
+    row-gap: 2rem;
 }
